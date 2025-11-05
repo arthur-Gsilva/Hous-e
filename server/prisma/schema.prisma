@@ -1,0 +1,112 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int           @id @default(autoincrement())
+  name      String
+  email     String        @unique
+  admin     Boolean       @default(false)
+  password  String
+  token     String?
+  createdAt DateTime      @default(now())
+  uptadesAt DateTime      @default(now()) @updatedAt
+  addresses UserAddress[]
+  orders    Order[]
+  Favorite  Favorite[]
+}
+
+model Favorite {
+  id        Int     @id @default(autoincrement())
+  userId    Int
+  productId Int
+  user      User    @relation(fields: [userId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+model UserAddress {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  zipcode    String
+  street     String
+  number     String
+  city       String
+  state      String
+  country    String
+  complement String?
+  createdAt  DateTime @default(now())
+  uptadesAt  DateTime @default(now()) @updatedAt
+  user       User     @relation(fields: [userId], references: [id])
+}
+
+model Product {
+  id          Int            @id @default(autoincrement())
+  name        String
+  price       Float
+  stock       Int
+  description String?
+  image       String
+  categoryId  Int
+  viewsCount  Int            @default(0)
+  salesCount  Int            @default(0)
+  createdAt   DateTime       @default(now())
+  uptadesAt   DateTime       @default(now()) @updatedAt
+  sections    Section[]
+  category    Category       @relation(fields: [categoryId], references: [id])
+  orders      OrderProduct[]
+  Favorite    Favorite[]
+}
+
+model Section {
+  id       Int       @id @default(autoincrement())
+  name     String
+  createdAt DateTime  @default(now())
+  uptadesAt DateTime  @default(now()) @updatedAt
+  products Product[]
+}
+
+model Category {
+  id        Int       @id @default(autoincrement())
+  name      String
+  createdAt DateTime  @default(now())
+  uptadesAt DateTime  @default(now()) @updatedAt
+  products  Product[]
+}
+
+model Order {
+  id                Int            @id @default(autoincrement())
+  userId            Int
+  status            String         @default("PENDING_PAYMENT")
+  total             Float
+  shippingCost      Float          @default(0)
+  shippingDays      Float          @default(0)
+  shippingZipcode   String?
+  shippingStreet    String?
+  shippingNumber    String?
+  shippingCity      String?
+  shippingState     String?
+  shippingCountry   String?
+  shippingComplemen String?
+  createdAt         DateTime       @default(now())
+  uptadesAt         DateTime       @default(now()) @updatedAt
+  orderItems        OrderProduct[]
+  user              User           @relation(fields: [userId], references: [id])
+}
+
+model OrderProduct {
+  id        Int      @id @default(autoincrement())
+  orderId   Int
+  productId Int
+  quantity  Int      @default(1)
+  price     Float
+  createdAt DateTime @default(now())
+  uptadesAt DateTime @default(now()) @updatedAt
+  order     Order    @relation(fields: [orderId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
+}
