@@ -81,7 +81,7 @@ docker-compose up -d
 
 📦 .env do Backend (server/.env)
 ```bash
-DATABASE_URL="postgresql://postgres:unhadourada@localhost:5432/house?schema=public"
+DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"
 BASE_URL="http://localhost:4000"
 JWT_SECRET_KEY=123456
 KAFKA_BROKER=localhost:9092
