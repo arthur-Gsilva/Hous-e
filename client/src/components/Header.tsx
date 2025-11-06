@@ -6,7 +6,6 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
 import { useCart } from "@/contexts/CartContext";
-import { useRouter } from "next/navigation";
 import { Cart } from "./Cart";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { UserMenu } from "./UserMenu";
@@ -14,15 +13,15 @@ import { UserMenu } from "./UserMenu";
 export const Header = () => {
 
     const { state } = useCart();
-    const router = useRouter()
+
     return(
         <header className="bg-[#252525]">
             <div className="w-full max-w-7xl mx-auto p-6 text-white flex items-center justify-between">
                 
-                <div 
+                <Link href={'/home'} 
                     className="text-3xl text-primary font-bold font-sans cursor-pointer"
-                    onClick={() => router.push('/home')}
-                    >HE</div>
+                    >HE
+                </Link>
                 
 
                 <div className="flex items-center gap-10 ">

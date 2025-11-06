@@ -5,7 +5,7 @@ import { adminMiddleware, authMiddleware } from "../middlewares/auth";
 
 const categoryRoutes = Router();
 
-categoryRoutes.get("/:id/products", getRelatedProductsController);
+categoryRoutes.get("/:id/:productId", getRelatedProductsController);
 categoryRoutes.post("/", authMiddleware, adminMiddleware, addCategoryController);
 categoryRoutes.get("/", authMiddleware, getAllCategoriesController);
 categoryRoutes.put('/:id', authMiddleware, adminMiddleware, updateCategoryController)

@@ -8,8 +8,8 @@ export const getOneProduct = async (id: number): Promise<Product> => {
     return response.data.product
 }
 
-export const getRelatedProducts = async (id: number): Promise<Product[]> => {
-    const response = await api.get(`category/${id}/products`)
+export const getRelatedProducts = async (categoryId: number, productId: number): Promise<Product[]> => {
+    const response = await api.get(`category/${categoryId}/${productId}`)
     return response.data.products
 }
 

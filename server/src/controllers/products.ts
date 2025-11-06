@@ -31,15 +31,15 @@ export const getOneProductController: RequestHandler = async (req, res) => {
 }
 
 export const getRelatedProductsController: RequestHandler = async (req, res) => {
-    const paramsResult = getOneProductSchema.safeParse(req.params)
-    if(!paramsResult.success){
-        res.status(500).json({ error: 'Parâmetros inválidos' })
-        return
-    }
+    // const paramsResult = getOneProductSchema.safeParse(req.params)
+    // if(!paramsResult.success){
+    //     res.status(500).json({ error: 'Parâmetros inválidos' })
+    //     return
+    // }
 
-    const { id } = paramsResult.data
+    const { id, productId } = req.params
 
-    const products = await getProductsByCategory(parseInt(id))
+    const products = await getProductsByCategory(parseInt(id), parseInt(productId))
     if(!products){
         res.status(400).json({ error: "Produtos não encontrados!" })
         return

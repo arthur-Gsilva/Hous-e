@@ -32,11 +32,11 @@ const page = () => {
         staleTime: 60000
     })
 
-    const categoryId = product?.categoryId
+    const {categoryId, id} = product
 
     const { data: relatedProducts } = useQuery({
         queryKey: ['related', {categoryId}],
-        queryFn: () => getRelatedProducts(categoryId as number)
+        queryFn: () => getRelatedProducts(categoryId, id)
     })
 
     const [quantity, setQuantity] = useState(1)
@@ -55,21 +55,22 @@ const page = () => {
     return(
         <div className="w-full max-w-7xl mx-auto p-6">
             <main className="flex gap-6">
-                <Image 
-                    src={product.image}
-                    alt={product.name}
-                    className="rounded-md"
-                    width={600}
-                    height={600}
-                    unoptimized
-                />
+                <div className="relative w-[600px] h-[600px]">
+                    <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-contain rounded-md"
+                        unoptimized
+                    />
+                </div>
 
-                <div className="pt-6 flex flex-col justify-between">
+                <div className="pt-6 flex flex-col justify-around">
                     <div>
                         <h3 className="text-3xl text-primary font-bold">{product.name}</h3>
-                        <p>{product.description}</p>
-                        <p className="text-sm text-gray-700">estoque: {product.stock}</p>
-                        <div className="text-2xl text-primary font-bold">{formatPrice(product.price)}</div>
+                        
+                        <p className="text-sm text-gray-700 ">estoque: {product.stock}</p>
+                        <div className="text-2xl text-primary font-bold mb-9">{formatPrice(product.price)}</div>
 
                         <div className="mt-6  flex items-start">
                             <QuantityAction 
@@ -77,6 +78,8 @@ const page = () => {
                                 setValue={setQuantity}
                                 inCart={false}
                             />
+
+                            <div className="text-2xl text-primary">{formatPrice(quantity * product.price)}</div>
                         </div>
                     </div>
 
@@ -85,7 +88,13 @@ const page = () => {
                             className="cursor-pointer"
                             onClick={handleAddToCart}
                         >Adicionar ao carrinho</Button>
-                        <div className="text-2xl text-primary">{formatPrice(quantity * product.price)}</div>
+                        
+
+                        
+                    </div>
+                    <div>
+                        <h6 className="font-bold text-lg mb-5">Descrição:</h6>
+                        <p>{product.description}</p>
                     </div>
                 </div>
                 

@@ -1,3 +1,4 @@
+import { notEqual } from "node:assert"
 import { prisma } from "../libs/prisma"
 import { CreateProduct, EditProduct } from "../types/product"
 
@@ -35,10 +36,11 @@ export const incrementProductView = async (id: number) => {
 }
 
 
-export const getProductsByCategory = async (id: number) => {
+export const getProductsByCategory = async (categoryId: number, id: number) => {
     const products = await prisma.product.findMany({
         where: {
-            categoryId: id
+            categoryId,
+            NOT: {id}
         },
         select: {
             id: true,
@@ -49,7 +51,8 @@ export const getProductsByCategory = async (id: number) => {
             categoryId: true,
             Favorite: true
         },
-        orderBy: {viewsCount: "desc" }
+        orderBy: {viewsCount: "desc" },
+        
     })
 
     return products.map(product => ({
