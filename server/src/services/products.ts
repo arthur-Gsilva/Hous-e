@@ -88,10 +88,19 @@ export const deleteProduct = async (id: number) => {
     })
 }
 
-export const getAllProducts = async () => {
-    const products = await prisma.product.findMany()
+export const getAllProducts = async (query: string) => {
+    const products = await prisma.product.findMany({
+        where: {
+            OR: [
+                { name: { contains: query, mode: "insensitive" } },
+                { description: { contains: query, mode: "insensitive" } },
+            ],
+        }
+    })
+
     return products.map(product => ({
         ...product,
         image: `products/${product.image}`,
     }))
 }
+

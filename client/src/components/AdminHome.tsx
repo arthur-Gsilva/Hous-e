@@ -9,7 +9,7 @@ export const AdminHome = () => {
 
     const { data: products } = useQuery({
         queryKey: ['products'],
-        queryFn: getAllProducts,
+        queryFn: () => getAllProducts(''),
         staleTime: 60 * 1000
     })
 

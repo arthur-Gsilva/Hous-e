@@ -1,7 +1,6 @@
 'use client'
 
 import Link from "next/link";
-import { CiSearch } from "react-icons/ci";
 import { FaRegUserCircle } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
@@ -9,6 +8,7 @@ import { useCart } from "@/contexts/CartContext";
 import { Cart } from "./Cart";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { UserMenu } from "./UserMenu";
+import { SearchInput } from "./ui/SearchInput";
 
 export const Header = () => {
 
@@ -23,15 +23,8 @@ export const Header = () => {
                     >HE
                 </Link>
                 
-
                 <div className="flex items-center gap-10 ">
-                    <div className="border-2 border-gray-400 transition-all duration-300 focus-within:border-primary flex items-center gap-3 p-2 min-w-80 rounded-md">
-                        <CiSearch />
-                        <input 
-                            className="border-none outline-0 flex-1"
-                            placeholder="O que você procura?"
-                        />
-                    </div>
+                    <SearchInput />
 
                     <DropdownMenu>
                         <DropdownMenuTrigger>

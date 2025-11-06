@@ -27,8 +27,8 @@ export const getFavoriteProducts = async (): Promise<Product[]> => {
     return response.data.products
 }
 
-export const getAllProducts = async (): Promise<Product[]> => {
-    const response = await api.get('product')
+export const getAllProducts = async (query: string): Promise<Product[]> => {
+    const response = await api.get(`product?search=${query}`)
     return response.data.products
 }
 

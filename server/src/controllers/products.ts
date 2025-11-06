@@ -108,7 +108,9 @@ export const deleteProductController: RequestHandler = async (req, res) => {
 }
 
 export const getAllProductController: RequestHandler = async (req, res) => {
-    const products = await getAllProducts()
+    const search = (req.query.search || "")
+
+    const products = await getAllProducts(search as string)
 
     const productsWithAbsoluteUrl = products.map(product => ({
         ...product,

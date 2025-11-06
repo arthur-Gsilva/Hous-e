@@ -1,9 +1,11 @@
+'use client'
+
 import { useQuery } from "@tanstack/react-query";
 import { AddAddressDialog } from "./AddAddressArea";
 import { Button } from "./ui/button"
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import { DropdownMenuSeparator } from "./ui/dropdown-menu"
-
+import dynamic from "next/dynamic";
 import { LuTicket } from "react-icons/lu";
 import { MdStarBorder } from "react-icons/md";
 import { getAddress } from "@/services/address";
