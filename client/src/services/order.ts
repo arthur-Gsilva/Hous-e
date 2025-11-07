@@ -24,6 +24,7 @@ export const createOrder = async (addressId: number, cartItem: CartItem[]) => {
             cart
         }) 
 
+        console.log(response.data)
         return response.data
     } catch (err: any) {
       console.log(err.response?.data?.error || "Erro ao adicionar endereço");
@@ -32,7 +33,8 @@ export const createOrder = async (addressId: number, cartItem: CartItem[]) => {
 
 export const getOrderById = async (id: number) => {
   const response = await api.get(`/order/${id}`);
-  return response.data;
+  console.log(response.data.order)
+  return response.data.order;
 };
 
 export const updateOrderStatus = async (orderId: number, status: string) => {

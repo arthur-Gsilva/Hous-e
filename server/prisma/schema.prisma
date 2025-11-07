@@ -20,6 +20,7 @@ model User {
   addresses UserAddress[]
   orders    Order[]
   Favorite  Favorite[]
+  Search    Search[]
 }
 
 model Favorite {
@@ -45,6 +46,15 @@ model UserAddress {
   user       User     @relation(fields: [userId], references: [id])
 }
 
+model Search {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  query     String
+  createdAt DateTime @default(now())
+  converted Boolean  @default(false)
+  user      User     @relation(fields: [userId], references: [id])
+}
+
 model Product {
   id          Int            @id @default(autoincrement())
   name        String
@@ -53,6 +63,7 @@ model Product {
   description String?
   image       String
   categoryId  Int
+  used        Boolean        @default(false)
   viewsCount  Int            @default(0)
   salesCount  Int            @default(0)
   createdAt   DateTime       @default(now())
@@ -64,11 +75,11 @@ model Product {
 }
 
 model Section {
-  id       Int       @id @default(autoincrement())
-  name     String
+  id        Int       @id @default(autoincrement())
+  name      String
   createdAt DateTime  @default(now())
   uptadesAt DateTime  @default(now()) @updatedAt
-  products Product[]
+  products  Product[]
 }
 
 model Category {
