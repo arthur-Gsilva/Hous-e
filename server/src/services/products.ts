@@ -88,13 +88,17 @@ export const deleteProduct = async (id: number) => {
     })
 }
 
-export const getAllProducts = async (query: string) => {
+export const getAllProducts = async (query: string, min: number, max: number) => {
     const products = await prisma.product.findMany({
         where: {
             OR: [
                 { name: { contains: query, mode: "insensitive" } },
                 { description: { contains: query, mode: "insensitive" } },
             ],
+            price: {
+                gte: min,
+                lte: max
+            }
         }
     })
 

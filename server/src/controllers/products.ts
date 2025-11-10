@@ -109,8 +109,10 @@ export const deleteProductController: RequestHandler = async (req, res) => {
 
 export const getAllProductController: RequestHandler = async (req, res) => {
     const search = (req.query.search || "")
+    const min = (req.query.min || "0")
+    const max = (req.query.max || Number.MAX_SAFE_INTEGER)
 
-    const products = await getAllProducts(search as string)
+    const products = await getAllProducts(search as string, parseInt(min as string), parseInt(max as string))
 
     const productsWithAbsoluteUrl = products.map(product => ({
         ...product,

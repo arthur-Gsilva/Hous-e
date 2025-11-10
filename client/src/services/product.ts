@@ -27,9 +27,14 @@ export const getFavoriteProducts = async (): Promise<Product[]> => {
     return response.data.products
 }
 
-export const getAllProducts = async (query: string): Promise<Product[]> => {
-    const response = await api.get(`product?search=${query}`)
-    return response.data.products
+export const getAllProducts = async (query: string, min?: number, max?: number): Promise<Product[]> => {
+    const params = new URLSearchParams();
+    if (query) params.append('search', query);
+    if (min !== undefined) params.append('min', min.toString());
+    if (max !== undefined) params.append('max', max.toString());
+
+    const response = await api.get(`product?${params.toString()}`);
+    return response.data.products;
 }
 
 export async function createProduct(data: AddProductSchema) {

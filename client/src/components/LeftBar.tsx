@@ -1,36 +1,53 @@
+'use client'
+
 import { FilterCheckboxItem } from "./FilterCheckboxItem"
 import { Checkbox } from "./ui/checkbox"
 import { Label } from "./ui/label"
-
-import { cn } from "@/lib/utils"
 import { Slider } from "@/components/ui/slider"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { Product } from "@/types/product"
+import { formatPrice } from "@/utils/formatters"
 
+type Props = {
+    products: Product[],
+    priceRange: [number, number];
+    setPriceRange: (range: [number, number]) => void;
+}
 
-type SliderProps = React.ComponentProps<typeof Slider>
+export const LeftBar = ({ products, priceRange, setPriceRange }: Props) => {
 
-export const LeftBar = ({ className, ...props }: SliderProps) => {
+    const averagePrice = products?.reduce((sum, product) => sum + product.price, 0) / products.length;
+    const prices = products?.map(p => p.price) ?? [];
+    const maxPrice = prices.length ? Math.max(...prices) : 0;
+    const minPrice = prices.length ? Math.min(...prices) : 0;
 
-    const [range, setRange] = useState<[number, number]>([20, 80]);
-    const minDistance = 1; 
+    const [localRange, setLocalRange] = useState<[number, number]>([minPrice, maxPrice]);
+
+    const [globalRange, setGlobalRange] = useState<[number, number]>([0, 0]);
+
+    useEffect(() => {
+        if (products?.length && globalRange[1] === 0) {
+            const prices = products.map(p => p.price);
+            const min = Math.min(...prices);
+            const max = Math.max(...prices);
+            setGlobalRange([min, max]);
+            setPriceRange([min, max]); // inicializa o range ativo
+        }
+    }, [products]);
 
     const handleChange = (values: number[]) => {
-        let [left, right] = values;
+        const [min, max] = values;
+        setLocalRange([min, max]);
+        console.log(max)
+}   ;
 
-        
-        if (left >= right - minDistance) {
-        if (range[0] !== left) {
-            left = right - minDistance;
-        } else {
-            right = left + minDistance;
-        }
-    }
-
-    setRange([left, right]);
-  };
+    const handleCommit = (values: number[]) => {
+        const [min, max] = values;
+        if (max - min >= 1) setPriceRange([min, max]);
+    };
 
     return(
-        <div className="pr-10 sticky top-0">
+        <div className="pr-10 sticky top-0 min-w-52">
             <h3 className="font-bold mb-8">Personalize sua busca:</h3>
 
             <FilterCheckboxItem label="Condição">
@@ -57,15 +74,16 @@ export const LeftBar = ({ className, ...props }: SliderProps) => {
 
             <div className="w-full space-y-4">
                 <Slider
-                    value={range}
+                    value={localRange}
                     onValueChange={handleChange}
-                    min={0}
-                    max={100}
+                    onValueCommit={handleCommit}
+                    min={globalRange[0]}
+                    max={globalRange[1]}
                     step={1}
                 />
                 <div className="flex justify-between text-sm text-muted-foreground">
-                    <span>Esquerda: {range[0]}</span>
-                    <span>Direita: {range[1]}</span>
+                    <span>{formatPrice(localRange[0])}</span>
+                    <span>{formatPrice(localRange[1])}</span>
                 </div>
             </div>
 
@@ -83,6 +101,4 @@ export const LeftBar = ({ className, ...props }: SliderProps) => {
             </FilterCheckboxItem>
         </div>
     )
-
 }
-
