@@ -11,7 +11,7 @@ export const addProductSchema = z.object({
     .string()
     .min(1, "Estoque obrigatório.")
     .refine((val) => !isNaN(Number(val)), "Estoque inválido."),
-  description: z.string().min(5, "Descrição muito curta."),
+  description: z.string().optional(),
   categoryId: z.string().min(1, "Categoria obrigatória."),
   secaoId: z.string().min(1, "Seção obrigatória."),
   image: z
@@ -32,7 +32,7 @@ export type AddProductSchema = {
   name: string;
   price: number;
   stock: number;
-  description: string;
+  description?: string;
   categoryId: string;
   image?: FileList;
 };

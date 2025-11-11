@@ -7,9 +7,6 @@ import { addProductSchema, AddProductFormInput, AddProductSchema } from "@/schem
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
   DialogHeader,
   DialogTitle,
   DialogFooter,

@@ -31,7 +31,7 @@ export const LeftBar = ({ products, priceRange, setPriceRange }: Props) => {
             const min = Math.min(...prices);
             const max = Math.max(...prices);
             setGlobalRange([min, max]);
-            setPriceRange([min, max]); // inicializa o range ativo
+            setPriceRange([min, max]); 
         }
     }, [products]);
 

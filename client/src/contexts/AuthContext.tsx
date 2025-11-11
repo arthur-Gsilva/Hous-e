@@ -26,8 +26,7 @@ const AuthContext = createContext<AuthContextType>({
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const queryClient = useQueryClient();
 
-  const {
-    data: user,
+  const { data: user,
     isLoading,
     isError,
     refetch,

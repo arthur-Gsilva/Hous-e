@@ -7,6 +7,7 @@ import { runPaymentConsumer } from './services/kafka/paymentConsumer.js';
 import { runStockConsumer } from './services/kafka/stockConsumer.js';
 import routes from './routes/main';
 import path from 'path';
+import { runSearchConsumer } from './services/kafka/searchConsumer';
 
 const server = express()
 server.use(cors({
@@ -27,4 +28,5 @@ server.listen(4000, async () => {
     await connectProducer()
     await runPaymentConsumer();
     await runStockConsumer()
+    await runSearchConsumer()
 })

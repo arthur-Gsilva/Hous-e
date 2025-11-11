@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { createUser, favoriteProduct, getProductsFavorites, logUser } from "../services/user";
+import { createUser, favoriteProduct, getProductsFavorites, getUserRecommendations, logUser } from "../services/user";
 import { loginSchema } from "../schemas/login-user-schema";
 import { registerSchema } from "../schemas/register-user-schema";
 import { addAddressSchema } from "../schemas/add-address-schema";
@@ -7,6 +7,7 @@ import { addAddress, getAllAddresses } from "../services/address";
 import { getProductIdSchema } from "../schemas/get-productId-schema";
 import { getPriority } from "node:os";
 import { getOneProduct } from "../services/products";
+import { getAbsoluteImgUrl } from "../utils/absoluteImgUrl";
 
 export const registerUserController: RequestHandler = async (req, res) => {
     const result = registerSchema.safeParse(req.body);
@@ -134,3 +135,25 @@ export const getProfileController: RequestHandler = async (req, res) => {
     const admin = req?.user?.admin; 
     res.json({ admin });
 }
+
+
+export const getRecommendationsController: RequestHandler = async (req, res) => {
+    const userId = req.user?.id;
+    if(!userId){
+        res.status(401).json({ error: "Acesso negado" })
+        return
+    }
+
+    try {
+        const recommendations = await getUserRecommendations(parseInt(userId));
+
+        const productsWithAbsoluteUrl = recommendations.map(product => ({
+            ...product,
+            image: getAbsoluteImgUrl(product.image as string),
+        }))
+        res.json({ recommendations: productsWithAbsoluteUrl });
+    } catch (error) {
+    console.error(error);
+        res.status(500).json({ error: "Erro ao gerar recomendações" });
+    }
+};

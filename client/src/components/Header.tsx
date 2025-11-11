@@ -9,10 +9,21 @@ import { Cart } from "./Cart";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { UserMenu } from "./UserMenu";
 import { SearchInput } from "./ui/SearchInput";
+import { useEffect, useState } from "react";
 
 export const Header = () => {
 
     const { state } = useCart();
+    const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  if (!isMounted) {
+    // Evita renderizar coisas que podem divergir entre SSR e Client
+    return null
+  }
 
     return(
         <header className="bg-[#252525]">

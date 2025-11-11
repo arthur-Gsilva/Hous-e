@@ -13,7 +13,7 @@ import { createOrder, updateOrderStatus, getOrderById } from "@/services/order";
 import { CartItem } from "@/types/CartItem";
 
 export const Cart = () => {
-    const { state } = useCart();
+    const { state, dispatch } = useCart();
     const queryClient = useQueryClient();
 
     const subtotal = state.items.reduce((acc, item) => acc + +item.product.price * item.quantity, 0);
@@ -34,7 +34,6 @@ export const Cart = () => {
         enabled: !!orderId,
     });
 
-    // Criação de pedido
     const createOrderMutation = useMutation({
         mutationFn: ({ addressId, items }: { addressId: number; items: CartItem[] }) =>
             createOrder(addressId, items),
@@ -67,6 +66,12 @@ export const Cart = () => {
 
     const handleUpdateStatus = (newStatus: string) => {
         if (!orderId) return;
+        if(newStatus === 'PAYMENT_CONFIRMED'){
+            queryClient.invalidateQueries({ queryKey: ["recommendations"] });
+            state.items.forEach((productItem) => {
+                dispatch({ type: "REMOVE_PRODUCT", payload: { product: productItem.product } })
+            }) 
+        }
         updateOrderMutation.mutate({ id: orderId, status: newStatus });
     };
 

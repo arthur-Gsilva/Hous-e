@@ -1,9 +1,10 @@
 import { RequestHandler } from "express";
 import { getOneProductSchema } from "../schemas/get-one-product-schema";
-import { createProduct, deleteProduct, getAllProducts, getOneProduct, getProductsByCategory, incrementProductView, updateProduct } from "../services/products";
+import { createProduct, deleteProduct, getAllProducts, getOneProduct, getProductsByCategory, getRelatedProductsByRules, incrementProductView, updateProduct } from "../services/products";
 import { getAbsoluteImgUrl } from "../utils/absoluteImgUrl";
 import { createProductSchema } from "../schemas/create-product-schema";
 import { editProductSchema } from "../schemas/edit-product-schema";
+import { publishEvent } from "../services/kafka/producer";
 
 export const getOneProductController: RequestHandler = async (req, res) => {
     const paramsResult = getOneProductSchema.safeParse(req.params)
@@ -108,11 +109,25 @@ export const deleteProductController: RequestHandler = async (req, res) => {
 }
 
 export const getAllProductController: RequestHandler = async (req, res) => {
+    const userId = req.user?.id;
+    if(!userId){
+        res.status(401).json({ error: "Acesso negado" })
+        return
+    }
+
     const search = (req.query.search || "")
     const min = (req.query.min || "0")
     const max = (req.query.max || Number.MAX_SAFE_INTEGER)
 
     const products = await getAllProducts(search as string, parseInt(min as string), parseInt(max as string))
+    if(!products){
+        res.status(500).json({ error: "Nenhum produto encontrado!" })
+    }
+
+    await publishEvent("searched", {
+        userId,
+        query: search
+    })
 
     const productsWithAbsoluteUrl = products.map(product => ({
         ...product,
@@ -120,4 +135,22 @@ export const getAllProductController: RequestHandler = async (req, res) => {
     }))
 
     res.json({ products: productsWithAbsoluteUrl })
+}
+
+export const getRelatedByRulesController: RequestHandler = async (req, res) => {
+    const { name } = req.params 
+
+    if (!name) {
+        res.status(400).json({ error: "Nome do produto não informado" })
+        return
+    }
+
+    const produtos = await getRelatedProductsByRules(name)
+
+    if (!produtos || produtos.length === 0) {
+        res.status(404).json({ error: "Nenhum produto relacionado encontrado" })
+        return
+    }
+
+    res.json({ products: produtos })
 }

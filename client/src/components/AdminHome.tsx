@@ -38,8 +38,8 @@ export const AdminHome = () => {
                             src={product.image}
                             alt={product.name}
                             className="rounded-md mx-auto"
-                            width={100}
-                            height={100}
+                            width={150}
+                            height={150}
                             unoptimized
                         />
                     </div>

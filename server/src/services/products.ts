@@ -1,6 +1,10 @@
-import { notEqual } from "node:assert"
 import { prisma } from "../libs/prisma"
 import { CreateProduct, EditProduct } from "../types/product"
+import fs from "fs";
+import path from "path";
+
+const regrasPath = path.resolve(process.cwd(), "src/data/regras_apriori.json");
+const regras: string[] = JSON.parse(fs.readFileSync(regrasPath, "utf-8"));
 
 export const getOneProduct = async (id: number) => {
     const product = await prisma.product.findUnique({
@@ -98,7 +102,7 @@ export const getAllProducts = async (query: string, min: number, max: number) =>
             price: {
                 gte: min,
                 lte: max
-            }
+            },
         }
     })
 
@@ -108,3 +112,32 @@ export const getAllProducts = async (query: string, min: number, max: number) =>
     }))
 }
 
+
+export const getRelatedProductsByRules = async (productName: string) => {
+    // 1️⃣ Busca regras onde o produto está na base (antecedente)
+    const relacionadas = regras.filter((r: any) => r.base.includes(productName))
+
+    // 2️⃣ Extrai todos os nomes dos produtos recomendados
+    const recomendados = [...new Set(relacionadas.flatMap((r: any) => r.recomendados))]
+
+    // 3️⃣ Busca esses produtos no banco (caso existam)
+    const produtos = await prisma.product.findMany({
+        where: {
+            name: { in: recomendados }
+        },
+        select: {
+            id: true,
+            name: true,
+            image: true,
+            price: true,
+            description: true,
+            categoryId: true,
+        }
+    })
+
+    // 4️⃣ Ajusta URLs de imagem e retorna
+    return produtos.map(p => ({
+        ...p,
+        image: `products/${p.image}`
+    }))
+}

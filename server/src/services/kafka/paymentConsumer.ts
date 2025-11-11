@@ -19,7 +19,6 @@ export async function runPaymentConsumer() {
 		eachMessage: async ({ message }) => {
 			const data = JSON.parse(message.value?.toString() || "{}");
 			logger.info(`Processndo pagamento de ${data.orderId}`);
-
 		},
 	});
 }

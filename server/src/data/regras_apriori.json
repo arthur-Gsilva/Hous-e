@@ -1,0 +1,606 @@
+[
+    {
+        "base": [
+            "Geladeira Preta"
+        ],
+        "recomendados": [
+            " Rack suspenso"
+        ],
+        "confidence": 0.5,
+        "lift": 7.692307692307692
+    },
+    {
+        "base": [
+            "Sofá Cinza",
+            " Alexa"
+        ],
+        "recomendados": [
+            " Alexa redonda"
+        ],
+        "confidence": 1.0,
+        "lift": 13.333333333333334
+    },
+    {
+        "base": [
+            "Sofá Cinza",
+            " Alexa redonda"
+        ],
+        "recomendados": [
+            " Alexa"
+        ],
+        "confidence": 1.0,
+        "lift": 16.666666666666668
+    },
+    {
+        "base": [
+            " Alexa",
+            " Alexa redonda"
+        ],
+        "recomendados": [
+            "Sofá Cinza"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 14.814814814814817
+    },
+    {
+        "base": [
+            " Ventisilva",
+            " aspirador potente"
+        ],
+        "recomendados": [
+            " Alexa"
+        ],
+        "confidence": 1.0,
+        "lift": 16.666666666666668
+    },
+    {
+        "base": [
+            " Ventisilva",
+            " Alexa"
+        ],
+        "recomendados": [
+            " aspirador potente"
+        ],
+        "confidence": 0.5,
+        "lift": 8.333333333333334
+    },
+    {
+        "base": [
+            " aspirador potente",
+            " Alexa"
+        ],
+        "recomendados": [
+            " Ventisilva"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 8.888888888888891
+    },
+    {
+        "base": [
+            " Ventisilva",
+            "Poltrona"
+        ],
+        "recomendados": [
+            " Alexa"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 11.111111111111112
+    },
+    {
+        "base": [
+            " Alexa",
+            "Poltrona"
+        ],
+        "recomendados": [
+            " Ventisilva"
+        ],
+        "confidence": 1.0,
+        "lift": 13.333333333333334
+    },
+    {
+        "base": [
+            " Ventisilva",
+            " Alexa"
+        ],
+        "recomendados": [
+            "Poltrona"
+        ],
+        "confidence": 0.5,
+        "lift": 7.692307692307692
+    },
+    {
+        "base": [
+            " Alexa redonda",
+            "Fogão de 5 bocas"
+        ],
+        "recomendados": [
+            " Guarda roupa 6 lugares"
+        ],
+        "confidence": 1.0,
+        "lift": 15.384615384615383
+    },
+    {
+        "base": [
+            " Alexa redonda",
+            " Guarda roupa 6 lugares"
+        ],
+        "recomendados": [
+            "Fogão de 5 bocas"
+        ],
+        "confidence": 1.0,
+        "lift": 20.0
+    },
+    {
+        "base": [
+            "Fogão de 5 bocas",
+            " Guarda roupa 6 lugares"
+        ],
+        "recomendados": [
+            " Alexa redonda"
+        ],
+        "confidence": 1.0,
+        "lift": 13.333333333333334
+    },
+    {
+        "base": [
+            " Rack suspenso",
+            " Alexa redonda"
+        ],
+        "recomendados": [
+            "Aspirador Branco"
+        ],
+        "confidence": 1.0,
+        "lift": 25.0
+    },
+    {
+        "base": [
+            " Rack suspenso",
+            "Aspirador Branco"
+        ],
+        "recomendados": [
+            " Alexa redonda"
+        ],
+        "confidence": 1.0,
+        "lift": 13.333333333333334
+    },
+    {
+        "base": [
+            " Alexa redonda",
+            "Aspirador Branco"
+        ],
+        "recomendados": [
+            " Rack suspenso"
+        ],
+        "confidence": 1.0,
+        "lift": 15.384615384615383
+    },
+    {
+        "base": [
+            " Rack suspenso",
+            " Cortana"
+        ],
+        "recomendados": [
+            " Geladeira Preta"
+        ],
+        "confidence": 1.0,
+        "lift": 11.76470588235294
+    },
+    {
+        "base": [
+            " Rack suspenso",
+            " Geladeira Preta"
+        ],
+        "recomendados": [
+            " Cortana"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 9.523809523809524
+    },
+    {
+        "base": [
+            " Geladeira Preta",
+            " Cortana"
+        ],
+        "recomendados": [
+            " Rack suspenso"
+        ],
+        "confidence": 1.0,
+        "lift": 15.384615384615383
+    },
+    {
+        "base": [
+            " Cortana",
+            "Robô aspirador umidificador"
+        ],
+        "recomendados": [
+            " fogao de 5 bocas"
+        ],
+        "confidence": 1.0,
+        "lift": 12.5
+    },
+    {
+        "base": [
+            " fogao de 5 bocas",
+            "Robô aspirador umidificador"
+        ],
+        "recomendados": [
+            " Cortana"
+        ],
+        "confidence": 1.0,
+        "lift": 14.285714285714285
+    },
+    {
+        "base": [
+            " fogao de 5 bocas",
+            " Cortana"
+        ],
+        "recomendados": [
+            "Robô aspirador umidificador"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 22.222222222222225
+    },
+    {
+        "base": [
+            " Poltrona",
+            "Sofá cama"
+        ],
+        "recomendados": [
+            " Fogão 4 Bocas"
+        ],
+        "confidence": 1.0,
+        "lift": 12.5
+    },
+    {
+        "base": [
+            " Poltrona",
+            " Fogão 4 Bocas"
+        ],
+        "recomendados": [
+            "Sofá cama"
+        ],
+        "confidence": 1.0,
+        "lift": 25.0
+    },
+    {
+        "base": [
+            " Fogão 4 Bocas",
+            "Sofá cama"
+        ],
+        "recomendados": [
+            " Poltrona"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 16.666666666666668
+    },
+    {
+        "base": [
+            " Ventisilva",
+            "Poltrona"
+        ],
+        "recomendados": [
+            " Fogão 4 Bocas"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 8.333333333333334
+    },
+    {
+        "base": [
+            " Ventisilva",
+            " Fogão 4 Bocas"
+        ],
+        "recomendados": [
+            "Poltrona"
+        ],
+        "confidence": 0.5,
+        "lift": 7.692307692307692
+    },
+    {
+        "base": [
+            "Poltrona",
+            " Fogão 4 Bocas"
+        ],
+        "recomendados": [
+            " Ventisilva"
+        ],
+        "confidence": 1.0,
+        "lift": 13.333333333333334
+    },
+    {
+        "base": [
+            " Fogão de 5 bocas",
+            " Ventilador Mallory"
+        ],
+        "recomendados": [
+            "Robo aspirador antiqueda"
+        ],
+        "confidence": 1.0,
+        "lift": 20.0
+    },
+    {
+        "base": [
+            " Fogão de 5 bocas",
+            "Robo aspirador antiqueda"
+        ],
+        "recomendados": [
+            " Ventilador Mallory"
+        ],
+        "confidence": 1.0,
+        "lift": 11.11111111111111
+    },
+    {
+        "base": [
+            " Ventilador Mallory",
+            "Robo aspirador antiqueda"
+        ],
+        "recomendados": [
+            " Fogão de 5 bocas"
+        ],
+        "confidence": 1.0,
+        "lift": 13.333333333333334
+    },
+    {
+        "base": [
+            " Robo aspirador antiqueda",
+            " Fogão fino"
+        ],
+        "recomendados": [
+            " Rack minimalista"
+        ],
+        "confidence": 0.5,
+        "lift": 7.692307692307692
+    },
+    {
+        "base": [
+            " Robo aspirador antiqueda",
+            " Rack minimalista"
+        ],
+        "recomendados": [
+            " Fogão fino"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 8.888888888888891
+    },
+    {
+        "base": [
+            " Rack minimalista",
+            " Fogão fino"
+        ],
+        "recomendados": [
+            " Robo aspirador antiqueda"
+        ],
+        "confidence": 0.5,
+        "lift": 6.25
+    },
+    {
+        "base": [
+            " Freezer",
+            " Sofá cama"
+        ],
+        "recomendados": [
+            " Geladeira vetorizada"
+        ],
+        "confidence": 1.0,
+        "lift": 9.090909090909092
+    },
+    {
+        "base": [
+            " Freezer",
+            " Geladeira vetorizada"
+        ],
+        "recomendados": [
+            " Sofá cama"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 13.333333333333334
+    },
+    {
+        "base": [
+            " Sofá cama",
+            " Geladeira vetorizada"
+        ],
+        "recomendados": [
+            " Freezer"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 8.333333333333334
+    },
+    {
+        "base": [
+            " Freezer",
+            "Rack reliquia"
+        ],
+        "recomendados": [
+            " Geladeira vetorizada"
+        ],
+        "confidence": 1.0,
+        "lift": 9.090909090909092
+    },
+    {
+        "base": [
+            " Freezer",
+            " Geladeira vetorizada"
+        ],
+        "recomendados": [
+            "Rack reliquia"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 19.047619047619047
+    },
+    {
+        "base": [
+            "Rack reliquia",
+            " Geladeira vetorizada"
+        ],
+        "recomendados": [
+            " Freezer"
+        ],
+        "confidence": 1.0,
+        "lift": 12.5
+    },
+    {
+        "base": [
+            " Freezer",
+            " Rack reliquia"
+        ],
+        "recomendados": [
+            "Poltrona"
+        ],
+        "confidence": 1.0,
+        "lift": 15.384615384615383
+    },
+    {
+        "base": [
+            " Freezer",
+            "Poltrona"
+        ],
+        "recomendados": [
+            " Rack reliquia"
+        ],
+        "confidence": 1.0,
+        "lift": 20.0
+    },
+    {
+        "base": [
+            " Rack reliquia",
+            "Poltrona"
+        ],
+        "recomendados": [
+            " Freezer"
+        ],
+        "confidence": 1.0,
+        "lift": 12.5
+    },
+    {
+        "base": [
+            "Frigobar Tecno",
+            " Geladeira vetorizada"
+        ],
+        "recomendados": [
+            " Geladeira Preta"
+        ],
+        "confidence": 1.0,
+        "lift": 11.76470588235294
+    },
+    {
+        "base": [
+            "Frigobar Tecno",
+            " Geladeira Preta"
+        ],
+        "recomendados": [
+            " Geladeira vetorizada"
+        ],
+        "confidence": 1.0,
+        "lift": 9.090909090909092
+    },
+    {
+        "base": [
+            " Geladeira vetorizada",
+            " Geladeira Preta"
+        ],
+        "recomendados": [
+            "Frigobar Tecno"
+        ],
+        "confidence": 0.5,
+        "lift": 14.285714285714285
+    },
+    {
+        "base": [
+            " Sofá Cinza",
+            " Geladeira vetorizada"
+        ],
+        "recomendados": [
+            " Rack minimalista"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 10.256410256410257
+    },
+    {
+        "base": [
+            " Sofá Cinza",
+            " Rack minimalista"
+        ],
+        "recomendados": [
+            " Geladeira vetorizada"
+        ],
+        "confidence": 1.0,
+        "lift": 9.090909090909092
+    },
+    {
+        "base": [
+            " Rack minimalista",
+            " Geladeira vetorizada"
+        ],
+        "recomendados": [
+            " Sofá Cinza"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 16.666666666666668
+    },
+    {
+        "base": [
+            " Sofá cama",
+            " Geladeira vetorizada"
+        ],
+        "recomendados": [
+            "Alexa"
+        ],
+        "confidence": 0.6666666666666667,
+        "lift": 22.222222222222225
+    },
+    {
+        "base": [
+            " Sofá cama",
+            "Alexa"
+        ],
+        "recomendados": [
+            " Geladeira vetorizada"
+        ],
+        "confidence": 1.0,
+        "lift": 9.090909090909092
+    },
+    {
+        "base": [
+            " Geladeira vetorizada",
+            "Alexa"
+        ],
+        "recomendados": [
+            " Sofá cama"
+        ],
+        "confidence": 1.0,
+        "lift": 20.0
+    },
+    {
+        "base": [
+            "Sofá Vermelho",
+            " Robo aspirador antiqueda"
+        ],
+        "recomendados": [
+            " fogao de 5 bocas"
+        ],
+        "confidence": 1.0,
+        "lift": 12.5
+    },
+    {
+        "base": [
+            "Sofá Vermelho",
+            " fogao de 5 bocas"
+        ],
+        "recomendados": [
+            " Robo aspirador antiqueda"
+        ],
+        "confidence": 1.0,
+        "lift": 12.5
+    },
+    {
+        "base": [
+            " Robo aspirador antiqueda",
+            " fogao de 5 bocas"
+        ],
+        "recomendados": [
+            "Sofá Vermelho"
+        ],
+        "confidence": 1.0,
+        "lift": 28.57142857142857
+    }
+]

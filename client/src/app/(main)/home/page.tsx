@@ -8,11 +8,10 @@ const page = () => {
     
     const { user } = useAuth();
 
-    if (!user) return null;
 
     return(
         <div  className="w-full max-w-7xl mx-auto p-6 flex flex-1">
-            {user?.admin === false &&
+            {!user || user?.admin === false &&
                 <>
                     <Home />
                 </>

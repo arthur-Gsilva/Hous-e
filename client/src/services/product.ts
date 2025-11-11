@@ -43,7 +43,7 @@ export async function createProduct(data: AddProductSchema) {
   formData.append("name", data.name);
   formData.append("price", data.price.toString());
   formData.append("stock", data.stock.toString());
-  formData.append("description", data.description);
+  formData.append("description", data.description as string);
   formData.append("categoryId", data.categoryId);
 
   if (data.image && data.image.length > 0) {

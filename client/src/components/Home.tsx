@@ -1,18 +1,37 @@
 import { getSections } from "@/services/section"
-import {  useQuery } from "@tanstack/react-query"
+import {  useQuery, useSuspenseQuery } from "@tanstack/react-query"
 import { SectionArea } from "./SectionArea"
 import { Skeleton } from "./ui/skeleton"
+import { getRecommendations } from "@/services/profile"
+import { Section } from "@/types/section"
 
 export const Home = () => {
 
-    const { data: sections, isFetching } = useQuery({
+    const { data: sections, isFetching } = useSuspenseQuery({
         queryKey: ['sections'],
         queryFn: getSections,
         staleTime: 60 * 1000
     })
 
+    const { data: recommendations } = useQuery({
+        queryKey: ['recommendations'],
+        queryFn: getRecommendations,
+        staleTime: 60 * 1000
+    })
+
+    const RecomendationSection: Section = {
+        id: sections?.length + 1,
+        name: "Com base no seu perfil",
+        products: recommendations
+    }
+
     return(
         <main className="w-full flex-1">
+
+            {recommendations && recommendations.length > 0 &&
+                <SectionArea  section={RecomendationSection} />
+            }
+
             {sections?.map((section) => (
                 <SectionArea key={section.id} section={section} />
             ))}
